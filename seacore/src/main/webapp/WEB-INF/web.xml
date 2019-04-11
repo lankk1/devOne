@@ -1,0 +1,124 @@
+<!DOCTYPE web-app PUBLIC
+        "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+        "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+    <!--<icon>-->
+    <!--<small-icon>/a0.jpg</small-icon>-->
+    <!--</icon>-->
+    <!--提供GUI工具可能会用来标记这个特定的Web应用的一个名称-->
+    <display-name>Archetype Created Web Application</display-name>
+
+    <!--context-param声明应用范围内的初始化参数-->
+    <context-param>
+        <!--Tomcat读取配置文件-->
+        <param-name>contextConfigLocation</param-name>
+        <param-value>
+            classpath:spring/spring-*.xml
+        </param-value>
+    </context-param>
+    <context-param>
+        <!--项目的rootkey,唯一,以便和同Tomcat中别的项目进行区分-->
+        <param-name>webAppRootKey</param-name>
+        <param-value>BWMUserPortal</param-value>
+    </context-param>
+
+    <!-- 编码过滤器,解决post乱码 -->
+    <filter>
+        <filter-name>springEncodingFilter</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+        <init-param>
+            <param-name>forceEncoding</param-name>
+            <param-value>true</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>springEncodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <!-- Spring监听器 -->
+    <listener>
+        <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+    </listener>
+    <!-- 防止Spring内存溢出监听器 -->
+    <listener>
+        <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
+    </listener>
+
+    <!--<servlet>-->
+    <!--<servlet-name>default</servlet-name>-->
+    <!--<servlet-class>-->
+    <!--org.apache.catalina.servlets.DefaultServlet-->
+    <!--</servlet-class>-->
+    <!--<init-param>-->
+    <!--<param-name>debug</param-name>-->
+    <!--<param-value>0</param-value>-->
+    <!--</init-param>-->
+    <!--<init-param>-->
+    <!--<param-name>listings</param-name>-->
+    <!--<param-value>false</param-value>-->
+    <!--</init-param>-->
+    <!--<load-on-startup>1</load-on-startup>-->
+    <!--</servlet>-->
+
+    <!-- springmvc的前端控制器 -->
+    <servlet>
+        <servlet-name>BABYWMUserPortalDispatcherServlet</servlet-name>
+        <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+        <!-- contextConfigLocation不是必须的，如果不配置contextConfigLocation， springmvc的配置文件默认在：WEB-INF/servlet的name+"-servlet.xml" -->
+        <init-param>
+            <param-name>contextConfigLocation</param-name>
+            <param-value>classpath:spring/spring-mvc.xml</param-value>
+        </init-param>
+        <!--优先启动-->
+        <load-on-startup>2</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>BABYWMUserPortalDispatcherServlet</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+
+    <!--将一些静态文件交给Tomcat的DefaultServlet处理-->
+    <servlet-mapping>
+        <servlet-name>default</servlet-name>
+        <url-pattern>*.html</url-pattern>
+    </servlet-mapping>
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>default</servlet-name>-->
+        <!--<url-pattern>*.jpg</url-pattern>-->
+    <!--</servlet-mapping>-->
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>default</servlet-name>-->
+        <!--<url-pattern>*.png</url-pattern>-->
+    <!--</servlet-mapping>-->
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>default</servlet-name>-->
+        <!--<url-pattern>*.js</url-pattern>-->
+    <!--</servlet-mapping>-->
+
+    <!--服务器在收到引用一个目录名而不是文件名的URL时，使用哪个文件-->
+    <welcome-file-list>
+        <!--<welcome-file>index.html</welcome-file>-->
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+
+    <!-- error-page元素使得在返回特定HTTP状态代码时，或者特定类型的异常被抛出时，能够制定将要显示的页面-->
+    <!--<error-page>-->
+        <!--<error-code>404</error-code>-->
+        <!--<location>/error-page/errorpage-404.html</location>-->
+    <!--</error-page>-->
+    <!--<error-page>-->
+        <!--<exception-type>java.lang.NullPointerException</exception-type>-->
+        <!--<location>/error-page/NullPointerException.html</location>-->
+    <!--</error-page>-->
+    <!--<error-page>-->
+        <!--<error-code>500</error-code>-->
+        <!--<location>/error-page/errorpage-500.html</location>-->
+    <!--</error-page>-->
+</web-app>
