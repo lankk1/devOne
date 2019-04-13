@@ -74,6 +74,7 @@
                domainObjectName="CoreUser" enableCountByExample="true"
                enableDeleteByExample="false" enableSelectByExample="true"
                enableUpdateByExample="true">
+            <generatedKey column="user_id" sqlStatement="MySql" identity="true" />
         </table>
 
     </context>

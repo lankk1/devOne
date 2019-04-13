@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <!-- 连接Oracle数据库使用,使用 -->
+    <classPathEntry location="C:\Users\dan3\.m2\repository\com\oracle\ojdbc6\11.2.0.3\ojdbc6-11.2.0.3.jar"/>
+
+    <!-- database context -->
+    <context id="SYS_SCHEMA">
+
+        <!-- comment setting-->
+        <commentGenerator>
+            <property name="suppressAllComments" value="false"/><!-- 是否取消注释 -->
+            <property name="suppressDate" value="true"/> <!-- 是否生成注释代时间戳-->
+        </commentGenerator>
+
+
+        <jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver"
+                        connectionURL="jdbc:oracle:thin:@192.168.8.132:1521:orcl"
+                        userId="core_schema"
+                        password="core_schema"
+        />
+
+        <!-- 类型转换 -->
+        <javaTypeResolver>
+            <!-- 是否使用bigDecimal， false可自动转化以下类型（Long, Integer, Short, etc.） -->
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- 生成实体类地址 -->
+        <javaModelGenerator targetPackage="com.pukanghealth.dto.tpaNew"
+                            targetProject="src/main/java">
+            <!-- 是否在当前路径下新加一层schema,eg：fase路径com.oop.eksp.user.model， true:com.oop.eksp.user.model.[schemaName] -->
+            <property name="enableSubPackages" value="false"/>
+            <!-- 是否针对string类型的字段在set的时候进行trim调用 -->
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!-- 生成mapxml文件 -->
+        <sqlMapGenerator targetPackage="mapper"
+                         targetProject="C:\SVNdownload\rebuild-project-dev\pukang-rebuild-master\pukang-mserver\tpa-claim\src\main\resources">
+            <!-- 是否在当前路径下新加一层schema,eg：fase路径com.oop.eksp.user.model， true:com.oop.eksp.user.model.[schemaName] -->
+            <property name="enableSubPackages" value="false"/>
+        </sqlMapGenerator>
+
+        <!-- 生成mapxml对应client，也就是接口dao -->
+        <javaClientGenerator targetPackage="com.pukanghealth.mapper"
+                             targetProject="C:\SVNdownload\rebuild-project-dev\pukang-rebuild-master\pukang-mserver\tpa-claim\src\main\java"
+                             type="XMLMAPPER">
+            <!-- 是否在当前路径下新加一层schema,eg：fase路径com.oop.eksp.user.model， true:com.oop.eksp.user.model.[schemaName] -->
+            <property name="enableSubPackages" value="false"/>
+        </javaClientGenerator>
+
+
+        <!--<table schema="SYS_SCHEMA" tableName="TPA_CLAIM_ALLOT"-->
+        <!--domainObjectName="TpaClaimAllot" enableCountByExample="true"-->
+        <!--enableDeleteByExample="true" enableSelectByExample="true"-->
+        <!--enableUpdateByExample="true">-->
+        <!--<generatedKey column="CLAIM_ALLOT_ID" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+        <!--<table schema="SYS_SCHEMA" tableName="TPA_CLAIM_BATCH"-->
+        <!--domainObjectName="TpaClaimBatch" enableCountByExample="true"-->
+        <!--enableDeleteByExample="true" enableSelectByExample="true"-->
+        <!--enableUpdateByExample="true">-->
+        <!--<generatedKey column="CLAIM_BATCH_ID" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+        <!--<table schema="SYS_SCHEMA" tableName="TPA_CLAIM_DETAIL"-->
+        <!--domainObjectName="TpaClaimDetail" enableCountByExample="true"-->
+        <!--enableDeleteByExample="true" enableSelectByExample="true"-->
+        <!--enableUpdateByExample="true">-->
+        <!--<generatedKey column="CLAIM_DETAIL_ID" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+        <!--<table schema="SYS_SCHEMA" tableName="TPA_EXPRESS_INFO"-->
+        <!--domainObjectName="TpaExpressInfo" enableCountByExample="true"-->
+        <!--enableDeleteByExample="true" enableSelectByExample="true"-->
+        <!--enableUpdateByExample="true">-->
+        <!--<generatedKey column="EXPRESS_ID" sqlStatement="JDBC" identity="true"/>-->
+        <!--</table>-->
+        <table schema="SYS_SCHEMA" tableName="HOSPITAL_DATA_MANAGE"
+               domainObjectName="HospitalDataManage" enableCountByExample="true"
+               enableDeleteByExample="true" enableSelectByExample="true"
+               enableUpdateByExample="true">
+            <generatedKey column="ID" sqlStatement="JDBC" identity="true"/>
+        </table>
+    </context>
+</generatorConfiguration>

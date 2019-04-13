@@ -20,7 +20,7 @@
     <context-param>
         <!--项目的rootkey,唯一,以便和同Tomcat中别的项目进行区分-->
         <param-name>webAppRootKey</param-name>
-        <param-value>BWMUserPortal</param-value>
+        <param-value>seacoreRoot</param-value>
     </context-param>
 
     <!-- 编码过滤器,解决post乱码 -->
@@ -68,7 +68,7 @@
 
     <!-- springmvc的前端控制器 -->
     <servlet>
-        <servlet-name>BABYWMUserPortalDispatcherServlet</servlet-name>
+        <servlet-name>seacoreDispatcherServlet</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
         <!-- contextConfigLocation不是必须的，如果不配置contextConfigLocation， springmvc的配置文件默认在：WEB-INF/servlet的name+"-servlet.xml" -->
         <init-param>
@@ -79,7 +79,7 @@
         <load-on-startup>2</load-on-startup>
     </servlet>
     <servlet-mapping>
-        <servlet-name>BABYWMUserPortalDispatcherServlet</servlet-name>
+        <servlet-name>seacoreDispatcherServlet</servlet-name>
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
@@ -90,16 +90,16 @@
         <url-pattern>*.html</url-pattern>
     </servlet-mapping>
     <!--<servlet-mapping>-->
-        <!--<servlet-name>default</servlet-name>-->
-        <!--<url-pattern>*.jpg</url-pattern>-->
+    <!--<servlet-name>default</servlet-name>-->
+    <!--<url-pattern>*.jpg</url-pattern>-->
     <!--</servlet-mapping>-->
     <!--<servlet-mapping>-->
-        <!--<servlet-name>default</servlet-name>-->
-        <!--<url-pattern>*.png</url-pattern>-->
+    <!--<servlet-name>default</servlet-name>-->
+    <!--<url-pattern>*.png</url-pattern>-->
     <!--</servlet-mapping>-->
     <!--<servlet-mapping>-->
-        <!--<servlet-name>default</servlet-name>-->
-        <!--<url-pattern>*.js</url-pattern>-->
+    <!--<servlet-name>default</servlet-name>-->
+    <!--<url-pattern>*.js</url-pattern>-->
     <!--</servlet-mapping>-->
 
     <!--服务器在收到引用一个目录名而不是文件名的URL时，使用哪个文件-->
@@ -109,16 +109,16 @@
     </welcome-file-list>
 
     <!-- error-page元素使得在返回特定HTTP状态代码时，或者特定类型的异常被抛出时，能够制定将要显示的页面-->
+    <error-page>
+        <error-code>404</error-code>
+        <location>/errorpage/error404.html</location>
+    </error-page>
     <!--<error-page>-->
-        <!--<error-code>404</error-code>-->
-        <!--<location>/error-page/errorpage-404.html</location>-->
+    <!--<exception-type>java.lang.NullPointerException</exception-type>-->
+    <!--<location>/error-page/NullPointerException.html</location>-->
     <!--</error-page>-->
     <!--<error-page>-->
-        <!--<exception-type>java.lang.NullPointerException</exception-type>-->
-        <!--<location>/error-page/NullPointerException.html</location>-->
-    <!--</error-page>-->
-    <!--<error-page>-->
-        <!--<error-code>500</error-code>-->
-        <!--<location>/error-page/errorpage-500.html</location>-->
+    <!--<error-code>500</error-code>-->
+    <!--<location>/error-page/errorpage-500.html</location>-->
     <!--</error-page>-->
 </web-app>
