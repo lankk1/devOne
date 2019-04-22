@@ -13,6 +13,8 @@
     <!--https://www.cnblogs.com/lyhappy/p/7095318.html-->
     <!--http://www.cnblogs.com/cunkouzh/p/9242292.html-->
     <!--https://blog.csdn.net/lihongtai/article/details/82830158-->
+
+    <!-- 导入配置文件 -->
     <context:property-placeholder location="classpath:redis/redis.properties"/>
 
     <!-- redis连接池配置 -->

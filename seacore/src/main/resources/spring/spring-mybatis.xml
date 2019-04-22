@@ -16,7 +16,9 @@
     <!--https://blog.csdn.net/qq_37171353/article/details/78524080-->
     <!--多个数据源查看pkoperate-->
 
-    <context:property-placeholder location="classpath:mybatis/druid.properties"/>
+    <!-- 导入配置文件 -->
+    <!--<context:property-placeholder location="classpath:mybatis/druid.properties"/>-->
+    <context:property-placeholder location="file:///${PRO_DIR}/jdbcconfig/druid.properties"/>
 
     <bean id="druidDataSource" class="com.alibaba.druid.pool.DruidDataSource">
         <property name="username" value="${jdbc.user}"/>

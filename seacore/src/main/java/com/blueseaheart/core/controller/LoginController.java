@@ -38,14 +38,14 @@ public class LoginController {
                             HttpServletRequest request,
                             HttpServletResponse response) {
         ResponseVo responseVo = new ResponseVo();
-        Integer au = loginService.addUser("as21");
+//        Integer au = loginService.addUser("as21");
        int i= loginService.updateHx();
         CommonUtils.countNum(loginUser);
 //        stringRedisTemplate.opsForValue().set("as21", "as20241", 20, TimeUnit.SECONDS);
 //        System.out.println(stringRedisTemplate.opsForValue().get("as21"));
-
+        logger.debug("11231");
         responseVo.getData().put("hah", CommonUtils.getRadomCharacters(-1));
-        responseVo.getData().put("au", au);
+//        responseVo.getData().put("au", au);
         responseVo.setErrorCode(0);
         responseVo.setErrorMsg("成功");
         return responseVo;

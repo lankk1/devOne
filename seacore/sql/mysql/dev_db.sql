@@ -58,9 +58,3 @@ CREATE TABLE dev_db.core_user_family (
   family_deleted int(4) DEFAULT 0 COMMENT'家人是否被删除,0未删除',
   PRIMARY KEY (family_id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='家人信息表';
-
-
-
-url="jdbc:mysql://192.168.0.22:3306/dev_db"
-		username="root"
-		password="123456"

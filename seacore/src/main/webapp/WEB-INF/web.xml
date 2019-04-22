@@ -23,8 +23,8 @@
         <param-value>seacoreRoot</param-value>
     </context-param>
 
-    <!-- 编码过滤器,解决post乱码 -->
     <filter>
+        <!-- 编码过滤器,解决中文乱码 -->
         <filter-name>springEncodingFilter</filter-name>
         <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
         <init-param>
@@ -41,7 +41,7 @@
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 
-    <!-- Spring监听器 -->
+    <!-- Spring上下文监听器 -->
     <listener>
         <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
     </listener>
@@ -113,12 +113,12 @@
         <error-code>404</error-code>
         <location>/errorpage/error404.html</location>
     </error-page>
+    <error-page>
+        <error-code>500</error-code>
+        <location>/errorpage/error500.html</location>
+    </error-page>
     <!--<error-page>-->
     <!--<exception-type>java.lang.NullPointerException</exception-type>-->
     <!--<location>/error-page/NullPointerException.html</location>-->
-    <!--</error-page>-->
-    <!--<error-page>-->
-    <!--<error-code>500</error-code>-->
-    <!--<location>/error-page/errorpage-500.html</location>-->
     <!--</error-page>-->
 </web-app>
